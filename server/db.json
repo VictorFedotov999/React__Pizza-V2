@@ -1,0 +1,458 @@
+{
+  "pizzas": [
+    {
+      "id": "0",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/0199b8e98ec871ab8a443887a3e1a136.avif",
+      "name": "Пицца с хреном",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 803,
+      "category": 0 ,
+      "rating": 4
+    },
+    {
+      "id": "1",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/019a897c5ea574b889475bd98412de7b.avif",
+      "name": "Мясная",
+      "types": [
+        0
+      ],
+      "sizes": [
+        26,
+        40
+      ],
+      "price": 245,
+      "category": 1,
+      "rating": 6
+    },
+    {
+      "id": "2",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/0198bf57bc517218ab93c762f4b0193e.avif",
+      "name": "Пепперони фреш",
+      "types": [
+        0
+      ],
+      "sizes": [
+        26,
+        40
+      ],
+      "price": 295,
+      "category": 1,
+      "rating": 4
+    },
+    {
+      "id": "3",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/019591ab87457239bfe765449966ab92.avif",
+      "name": "Додо",
+      "types": [
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 275,
+      "category": 2,
+      "rating": 2
+    },
+    {
+      "id": "4",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/0198bf24170179679a7872f2ddf16d18.avif",
+      "name": "Чесночный цыпленок",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 415,
+      "category": 3,
+      "rating": 8
+    },
+    {
+      "id": "5",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/0198bf25089a74d08e08629b41ed39ee.avif",
+      "name": "Пикантные колбаски",
+      "types": [
+        0
+      ],
+      "sizes": [
+        30,
+        40
+      ],
+      "price": 580,
+      "category": 2,
+      "rating": 2
+    },
+    {
+      "id": "6",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/019a10a0c9ab792190a97768688bc6e9.avif",
+      "name": "Терияки",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 675,
+      "category": 1,
+      "rating": 9
+    },
+    {
+      "id": "7",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/019a109fe01672189d029a725ba99705.avif",
+      "name": "Четыре сыра ",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 450,
+      "category": 4,
+      "rating": 10
+    },
+    {
+      "id": "8",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf4f806371f19d529f9e9e7dba36.avif",
+      "name": "Чоризо фреш",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 395,
+      "category": 5,
+      "rating": 10
+    },
+    {
+      "id": "9",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf283b2372ea8e7cfc8adae9ea84.avif",
+      "name": "Ветчина и сыр",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 285,
+      "category": 5,
+      "rating": 7
+    },
+    {
+      "id": "10",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf582d24772c8cf624df9d91503b.avif",
+      "name": "Мясной микс с говядиной",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 299,
+      "category": 0,
+      "rating": 8
+    },
+    {
+      "id": "11",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf4a963f722a8f2780b4a9b66365.avif",
+      "name": "Додо микс",
+      "types": [
+        0
+      ],
+      "sizes": [
+        26,
+        40
+      ],
+      "price": 349,
+      "category": 1,
+      "rating": 7
+    },
+    {
+      "id": "12",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf29e76179b88bdbf2ec5527bba3.avif",
+      "name": "Овощи и грибы ",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        30,
+        40
+      ],
+      "price": 449,
+      "category": 2,
+      "rating": 9
+    },
+    {
+      "id": "13",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf47733e787a98ed55d13e9a2251.avif",
+      "name": "Четыре сезона",
+      "types": [
+        0
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 399,
+      "category": 3,
+      "rating": 8
+    },
+    {
+      "id": "14",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf315122735a8b45cf8539df53f8.avif",
+      "name": "Двойная пепперони",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        40
+      ],
+      "price": 429,
+      "category": 4,
+      "rating": 7
+    },
+    {
+      "id": "15",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf439a007604880d0231be87cd3e.avif",
+      "name": "Диабло ",
+      "types": [
+        0
+      ],
+      "sizes": [
+        30,
+        40
+      ],
+      "price": 479,
+      "category": 5,
+      "rating": 9
+    },
+    {
+      "id": "16",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf3d788b78d491891a6da5e94bf1.avif",
+      "name": "Маргарита ",
+      "types": [
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 329,
+      "category": 2,
+      "rating": 8
+    },
+    {
+      "id": "17",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/019a109ea75376fe9b51989f221bd92c.avif",
+      "name": "Охотничья",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        40
+      ],
+      "price": 459,
+      "category": 1,
+      "rating": 9
+    },
+    {
+      "id": "18",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf265f7371bcb8a99321fecf2716.avif",
+      "name": "Цыпленок ранч",
+      "types": [
+        0
+      ],
+      "sizes": [
+        30,
+        40
+      ],
+      "price": 419,
+      "category": 3,
+      "rating": 7
+    },
+    {
+      "id": "19",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf2cc87a79baa946c53b634615f4.avif",
+      "name": "Цыпленок барбекю",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 379,
+      "category": 4,
+      "rating": 8
+    },
+    {
+      "id": "20",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf530345746e98039478001d5108.avif",
+      "name": "Гавайская",
+      "types": [
+        0
+      ],
+      "sizes": [
+        26,
+        40
+      ],
+      "price": 549,
+      "category": 5,
+      "rating": 9
+    },
+    {
+      "id": "21",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf4e67f474f991f04a46a49af5e6.avif",
+      "name": "Жюльен",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        30,
+        40
+      ],
+      "price": 389,
+      "category": 0,
+      "rating": 8
+    },
+    {
+      "id": "22",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf2b03447079941f2d5ac6e986a9.avif",
+      "name": "Карбонара ",
+      "types": [
+        0
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 469,
+      "category": 1,
+      "rating": 7
+    },
+    {
+      "id": "23",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf5147f27780a3290a82692e7a36.avif",
+      "name": "Креветки с чили",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        40
+      ],
+      "price": 499,
+      "category": 2,
+      "rating": 9
+    },
+    {
+      "id": "24",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf2e5d2973a4bf5ec61161496f91.avif",
+      "name": "Аррива",
+      "types": [
+        0
+      ],
+      "sizes": [
+        30,
+        40
+      ],
+      "price": 349,
+      "category": 3,
+      "rating": 8
+    },
+    {
+      "id": "25",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198c659b357718f9c77ad0dc392dadf.avif",
+      "name": "Ветчина и грибы",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        26,
+        30,
+        40
+      ],
+      "price": 429,
+      "category": 4,
+      "rating": 8
+    },
+    {
+      "id": "26",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf4624de7324966f2fc62c3ca673.avif",
+      "name": "Чилл Грилл",
+      "types": [
+        0
+      ],
+      "sizes": [
+        26,
+        40
+      ],
+      "price": 479,
+      "category": 5,
+      "rating": 7
+    },
+    {
+      "id": "27",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf4d218b75d4a3e667fc2f6d7643.avif",
+      "name": "Креветка и песто",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        30,
+        40
+      ],
+      "price": 399,
+      "category": 0,
+      "rating": 9
+    }
+    
+  ],
+
+  "cart":[{
+      "id":1
+  }]
+  
+}
