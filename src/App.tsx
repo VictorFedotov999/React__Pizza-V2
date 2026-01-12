@@ -7,22 +7,27 @@ import PageBasket from './components/PageBasket/PageBasket';
 import PageProducts from './components/PageProducts/PageProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProducts, setAllProducts, changeIsLoading } from './store/slices/productSlice';
+import ProductEmpty from './components/ProductsEmpty/ProductEmpty';
 
-const App: React.FC = () => {
+const App = () => {
     const dispatch = useDispatch();
-    const { allProducts, totalProductOnPage, currentPage } = useSelector((state) => state.product);
+    const { allProducts, totalProductOnPage, currentPage, products } = useSelector(
+        (state) => state.product,
+    );
 
     const { paginationActiveIndex } = useSelector((state) => state.filter.categoriesPagination);
     const { sortirovkaActiveIndex, sortirovkaTitle } = useSelector(
         (state) => state.filter.categoriesSortirovka,
     );
+    const { searchProduct } = useSelector((state) => state.filter);
+
     const start = (currentPage - 1) * totalProductOnPage;
     React.useEffect(() => {
         dispatch(changeIsLoading(true));
         const category = paginationActiveIndex === 0 ? '' : `&category=${paginationActiveIndex}`;
         axios
             .get(
-                `http://localhost:3000/pizzas?_start=${start}&_limit=${totalProductOnPage}&_sort=${sortirovkaTitle[sortirovkaActiveIndex]}&${category}&name_like=Пикантные колбаски`,
+                `http://localhost:3000/pizzas?_start=${start}&_limit=${totalProductOnPage}&_sort=${sortirovkaTitle[sortirovkaActiveIndex]}&${category}&name_like=${searchProduct}`,
             )
             .then((res) => {
                 dispatch(setProducts(res.data));
@@ -30,9 +35,12 @@ const App: React.FC = () => {
                 dispatch(changeIsLoading(false));
             });
 
-        axios.get(`http://localhost:3000/pizzas?&${category}`).then((res) => {
-            dispatch(setAllProducts(res.data));
-        });
+        axios
+            .get(`http://localhost:3000/pizzas?&${category}&name_like=${searchProduct}`)
+            .then((res) => {
+                dispatch(setAllProducts(res.data));
+                dispatch(changeIsLoading(false));
+            });
     }, [
         start,
         totalProductOnPage,
@@ -40,6 +48,7 @@ const App: React.FC = () => {
         sortirovkaActiveIndex,
         sortirovkaTitle,
         paginationActiveIndex,
+        searchProduct,
     ]);
 
     return (
@@ -47,16 +56,7 @@ const App: React.FC = () => {
             <div className='wrapper'>
                 <Header />
                 <Routes>
-                    <Route
-                        path=''
-                        element={
-                            <PageProducts
-                                totalProductOnPage={totalProductOnPage}
-                                currentPage={currentPage}
-                                allProducts={allProducts}
-                            />
-                        }
-                    />
+                    <Route path='' element={<PageProducts />} />
                     <Route path='/cart' element={<PageBasket />} />
                 </Routes>
             </div>

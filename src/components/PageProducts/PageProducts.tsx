@@ -1,7 +1,7 @@
 import Categories from '../Categories/Categories';
 import ItemsProducts from '../ItemsProducts/ItemsProducts';
 import Pagination from '../Pagination/Pagination';
-const PageProducts = ({ totalProductOnPage, currentPage, allProducts }) => {
+const PageProducts = () => {
     return (
         <>
             <div className='content'>
@@ -9,11 +9,7 @@ const PageProducts = ({ totalProductOnPage, currentPage, allProducts }) => {
                     <Categories />
                     <ItemsProducts />
                 </div>
-                <Pagination
-                    totalProductOnPage={totalProductOnPage}
-                    currentPage={currentPage}
-                    allProducts={allProducts}
-                />
+                <Pagination />
             </div>
         </>
     );

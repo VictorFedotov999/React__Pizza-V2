@@ -2,11 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     currentPage: 1,
-    totalProductOnPage: 5,
+    totalProductOnPage: 8,
     products: [],
     allProducts: [],
     isLoading: false,
-    searchProduct: '',
 };
 
 const productSlice = createSlice({
@@ -25,13 +24,10 @@ const productSlice = createSlice({
         changeIsLoading(state, action) {
             state.isLoading = action.payload;
         },
-        setSearchProduct(state, action) {
-            state.searchProduct = action.payload;
-        },
     },
 });
 
-export const { setProducts, changeCurrentPage, setAllProducts, changeIsLoading, setSearchProduct } =
+export const { setProducts, changeCurrentPage, setAllProducts, changeIsLoading } =
     productSlice.actions;
 
 export default productSlice.reducer;

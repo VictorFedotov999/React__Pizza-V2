@@ -2,10 +2,10 @@ import { useSelector } from 'react-redux';
 import ItemProduct from '../ItemProduct/ItemProduct';
 import AddProducts from './AddProducts';
 import SkeletonProduct from '../SkeletonProduct/SkeletonProduct';
+import ProductEmpty from '../ProductsEmpty/ProductEmpty';
 const ItemsProducts = (props) => {
-    const isLoading = useSelector((state) => state.product.isLoading);
-    const products = useSelector((state) => state.product.products);
-    const totalProductOnPage = useSelector((state) => state.product.totalProductOnPage);
+    const { isLoading, products, totalProductOnPage } = useSelector((state) => state.product);
+
     const skeletonProduct = Array(totalProductOnPage).fill(0);
 
     if (isLoading) {
@@ -16,6 +16,9 @@ const ItemsProducts = (props) => {
                 ))}
             </div>
         );
+    }
+    if (products.length === 0) {
+        return <ProductEmpty />;
     } else {
         return (
             <div className='content__items'>

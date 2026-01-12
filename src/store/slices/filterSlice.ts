@@ -10,6 +10,7 @@ const initialState = {
         sortirovkaActiveIndex: 0,
         sortirovkaTitle: ['rating', 'price', 'name'],
     },
+    searchProduct: '',
 };
 
 const filterSlice = createSlice({
@@ -23,9 +24,14 @@ const filterSlice = createSlice({
         setSortirovkaActiveIndex(state, action) {
             state.categoriesSortirovka.sortirovkaActiveIndex = action.payload;
         },
+
+        setSearchProduct(state, action) {
+            state.searchProduct = action.payload;
+        },
     },
 });
 
-export const { setPaginationActiveIndex, setSortirovkaActiveIndex } = filterSlice.actions;
+export const { setPaginationActiveIndex, setSortirovkaActiveIndex, setSearchProduct } =
+    filterSlice.actions;
 
 export default filterSlice.reducer;

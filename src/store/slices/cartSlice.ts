@@ -51,7 +51,9 @@ const cartSlice = createSlice({
             const productCurrent = action.payload;
             const productMinusIndex = state.productsCart.findIndex(
                 (product) =>
-                    product.id === productCurrent.id && product.sizes === productCurrent.sizes,
+                    product.id === productCurrent.id &&
+                    product.sizes === productCurrent.sizes &&
+                    product.types === productCurrent.types,
             );
 
             if (productMinusIndex !== -1) {
@@ -67,9 +69,27 @@ const cartSlice = createSlice({
                 }
             }
         },
+
+        removeProduct(state, action) {
+            const removeProduct = action.payload;
+            const indexToRemove = state.productsCart.findIndex(
+                (product) =>
+                    product.id === removeProduct.id &&
+                    product.types === removeProduct.types &&
+                    product.sizes === removeProduct.sizes,
+            );
+
+            if (indexToRemove !== -1) {
+                const removedProduct = state.productsCart[indexToRemove];
+                state.totalCount -= removedProduct.count;
+                state.totalOrder -= removedProduct.price * removedProduct.count;
+                state.productsCart.splice(indexToRemove, 1);
+            }
+        },
     },
 });
 
-export const { addProductToCart, clearCart, plusCount, minusCount } = cartSlice.actions;
+export const { addProductToCart, clearCart, plusCount, minusCount, removeProduct } =
+    cartSlice.actions;
 
 export default cartSlice.reducer;

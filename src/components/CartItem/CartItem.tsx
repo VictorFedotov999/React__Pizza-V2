@@ -18,7 +18,7 @@ const CartItem = ({ product }) => {
             />
             <CartItemCount productCount={product.count} product={product} />
             <CartItemPrice price={price} />
-            <CartItemRemove />
+            <CartItemRemove product={product} />
         </div>
     );
 };
