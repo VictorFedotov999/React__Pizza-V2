@@ -1,13 +1,13 @@
 import ReactPaginate from 'react-paginate';
 import { changeCurrentPage } from '../../store/slices/productSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Pagination = ({ totalProductOnPage, currentPage, allProducts }) => {
     const dispatch = useDispatch();
-
     const handlePageClick = (event) => {
         const newPage = event.selected + 1;
         dispatch(changeCurrentPage(newPage));
+        window.scrollTo(0, 0);
     };
 
     const length = Math.ceil(allProducts.length / totalProductOnPage);

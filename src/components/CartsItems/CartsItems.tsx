@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import CartItem from '../CartItem/CartItem';
 
 const CartsItems = () => {
-    const productsCart = useSelector((state) => state.cart.productsCart);
+    const { productsCart } = useSelector((state) => state.cart);
     return (
         <div className='content__items'>
             {productsCart.map((product, index) => (

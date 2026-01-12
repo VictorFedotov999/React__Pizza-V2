@@ -5,9 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 const CategoriesSortirovka = () => {
     const dispatch = useDispatch();
     const categories = ['популярности', 'цене', 'алфавиту'];
-    const sortirovkaActiveIndex = useSelector(
-        (state) => state.filter.categoriesSortirovka.sortirovkaActiveIndex,
-    );
+
+    const { sortirovkaActiveIndex } = useSelector((state) => state.filter.categoriesSortirovka);
     const [openPopup, setOpenPopup] = React.useState(false);
 
     const onChangeSortirovkaActiveIndex = (index: number) => {

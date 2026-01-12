@@ -675,3 +675,29 @@ body {
     margin-bottom: 20px;
     border-radius: 49.25rem !important;
 }
+
+.header-filter {
+    display: flex;
+    align-items: center;
+}
+
+.header-input {
+    width: 350px;
+    height: 40px;
+    border-radius: 30px;
+    font-size: 20px;
+    padding-left: 20px;
+
+    border: 2px solid black;
+}
+
+.header-input::placeholder {
+    font-size: 20px;
+}
+
+.header-icon {
+    width: 20px;
+    height: 20px;
+
+    right: 1000px;
+}

@@ -12,7 +12,7 @@ const ItemsProducts = (props) => {
         return (
             <div className='content__items'>
                 {skeletonProduct.map((_, index) => (
-                    <SkeletonProduct />
+                    <SkeletonProduct key={`${_}-${index}`} />
                 ))}
             </div>
         );

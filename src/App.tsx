@@ -10,22 +10,19 @@ import { setProducts, setAllProducts, changeIsLoading } from './store/slices/pro
 
 const App: React.FC = () => {
     const dispatch = useDispatch();
-    const allProducts = useSelector((state) => state.product.allProducts);
-    const totalProductOnPage = useSelector((store) => store.product.totalProductOnPage);
-    const currentPage = useSelector((store) => store.product.currentPage);
-    const sortirovkaActiveIndex = useSelector(
-        (state) => state.filter.categoriesSortirovka.sortirovkaActiveIndex,
-    );
-    const sortirovkaTitle = useSelector(
-        (state) => state.filter.categoriesSortirovka.sortirovkaTitle,
-    );
+    const { allProducts, totalProductOnPage, currentPage } = useSelector((state) => state.product);
 
+    const { paginationActiveIndex } = useSelector((state) => state.filter.categoriesPagination);
+    const { sortirovkaActiveIndex, sortirovkaTitle } = useSelector(
+        (state) => state.filter.categoriesSortirovka,
+    );
     const start = (currentPage - 1) * totalProductOnPage;
     React.useEffect(() => {
         dispatch(changeIsLoading(true));
+        const category = paginationActiveIndex === 0 ? '' : `&category=${paginationActiveIndex}`;
         axios
             .get(
-                `http://localhost:3000/pizzas?_start=${start}&_limit=${totalProductOnPage}&_sort=${sortirovkaTitle[sortirovkaActiveIndex]}`,
+                `http://localhost:3000/pizzas?_start=${start}&_limit=${totalProductOnPage}&_sort=${sortirovkaTitle[sortirovkaActiveIndex]}&${category}&name_like=Пикантные колбаски`,
             )
             .then((res) => {
                 dispatch(setProducts(res.data));
@@ -33,10 +30,17 @@ const App: React.FC = () => {
                 dispatch(changeIsLoading(false));
             });
 
-        axios.get('http://localhost:3000/pizzas').then((res) => {
+        axios.get(`http://localhost:3000/pizzas?&${category}`).then((res) => {
             dispatch(setAllProducts(res.data));
         });
-    }, [currentPage, sortirovkaActiveIndex]);
+    }, [
+        start,
+        totalProductOnPage,
+        sortirovkaTitle,
+        sortirovkaActiveIndex,
+        sortirovkaTitle,
+        paginationActiveIndex,
+    ]);
 
     return (
         <>

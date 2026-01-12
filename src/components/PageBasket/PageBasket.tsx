@@ -6,7 +6,7 @@ import BasketEmpty from '../BasketEmpy/BasketEmpy';
 import { useSelector } from 'react-redux';
 
 const PageBasket = () => {
-    const productsCart = useSelector((state) => state.cart.productsCart);
+    const { productsCart } = useSelector((state) => state.cart);
     if (productsCart.length === 0) {
         return <BasketEmpty />;
     }

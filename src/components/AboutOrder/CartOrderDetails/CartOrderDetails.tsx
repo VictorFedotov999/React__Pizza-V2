@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 
 const CartOrderDetails = () => {
-    const totalCount = useSelector((state) => state.cart.totalCount);
-    const totalOrder = useSelector((state) => state.cart.totalOrder);
+    const { totalCount, totalOrder } = useSelector((state) => state.cart);
+
     return (
         <>
             <div className='cart__bottom-details'>

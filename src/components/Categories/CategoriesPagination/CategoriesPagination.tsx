@@ -4,18 +4,13 @@ import { setPaginationActiveIndex } from '../../../store/slices/filterSlice';
 
 const CategoriesPagination = () => {
     const dispatch = useDispatch();
+    const { paginationActiveIndex, paginationTitle } = useSelector(
+        (state) => state.filter.categoriesPagination,
+    );
 
     const onChangePaginationActiveIndex = (index) => {
         dispatch(setPaginationActiveIndex(index));
     };
-
-    const paginationActiveIndex = useSelector(
-        (state) => state.filter.categoriesPagination.paginationActiveIndex,
-    );
-
-    const paginationTitle = useSelector(
-        (state) => state.filter.categoriesPagination.paginationTitle,
-    );
 
     return (
         <div className='categories'>

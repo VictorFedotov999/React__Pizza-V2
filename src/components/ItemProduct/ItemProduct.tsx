@@ -32,7 +32,7 @@ const ItemProduct = ({ product }) => {
                 <h4 className='pizza-block__title'>{product.name}</h4>
                 <div className='pizza-block__selector'>
                     <ul>
-                        {product.types.map((type: string, index: number) => (
+                        {product.types.map((type, index) => (
                             <li
                                 key={`${type}-${index}`}
                                 className={typeName === index ? 'active' : ''}
@@ -43,7 +43,7 @@ const ItemProduct = ({ product }) => {
                         ))}
                     </ul>
                     <ul>
-                        {product.sizes.map((size: number, index: number) => (
+                        {product.sizes.map((size, index) => (
                             <li
                                 key={`${size}-${index}`}
                                 className={sizeType === index ? 'active' : ''}
