@@ -5,8 +5,7 @@ import { productSelector } from '../../store/slices/productSlice';
 const Pagination = () => {
     const dispatch = useDispatch();
 
-    const { totalProductOnPage, currentPage, allProducts, isLoading } =
-        useSelector(productSelector);
+    const { totalProductOnPage, currentPage, allProducts, status } = useSelector(productSelector);
 
     const handlePageClick = (event) => {
         const newPage = event.selected + 1;
@@ -16,7 +15,7 @@ const Pagination = () => {
 
     const pageCount = Math.ceil(allProducts.length / totalProductOnPage);
 
-    if (isLoading || pageCount <= 1 || allProducts.length === 0) {
+    if (status === 'loading' || status === 'error' || pageCount <= 1 || allProducts.length === 0) {
         return null;
     }
 

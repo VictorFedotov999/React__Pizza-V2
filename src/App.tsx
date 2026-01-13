@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router';
 import React from 'react';
-import axios from 'axios';
+
 import '../src/scss/app.scss';
 import Header from './components/Header/Header';
 import PageBasket from './components/PageBasket/PageBasket';
 import PageProducts from './components/PageProducts/PageProducts';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProducts, setAllProducts, changeIsLoading } from './store/slices/productSlice';
+import { fetchAllPizzas, fetchPizzas } from './store/slices/productSlice';
 
 import { productSelector } from './store/slices/productSlice';
 import {
@@ -24,25 +24,26 @@ const App = () => {
     const { searchProduct } = useSelector(searchProductSelector);
 
     const start = (currentPage - 1) * totalProductOnPage;
+    const category = paginationActiveIndex === 0 ? '' : `&category=${paginationActiveIndex}`;
+
     React.useEffect(() => {
-        dispatch(changeIsLoading(true));
-        const category = paginationActiveIndex === 0 ? '' : `&category=${paginationActiveIndex}`;
-        axios
-            .get(
-                `http://localhost:3000/pizzas?_start=${start}&_limit=${totalProductOnPage}&_sort=${sortirovkaTitle[sortirovkaActiveIndex]}&${category}&name_like=${searchProduct}`,
-            )
-            .then((res) => {
-                dispatch(setProducts(res.data));
+        dispatch(
+            fetchPizzas({
+                start,
+                totalProductOnPage,
+                sortirovkaTitle,
+                sortirovkaActiveIndex,
+                category,
+                searchProduct,
+            }),
+        );
 
-                dispatch(changeIsLoading(false));
-            });
-
-        axios
-            .get(`http://localhost:3000/pizzas?&${category}&name_like=${searchProduct}`)
-            .then((res) => {
-                dispatch(setAllProducts(res.data));
-                dispatch(changeIsLoading(false));
-            });
+        dispatch(
+            fetchAllPizzas({
+                category,
+                searchProduct,
+            }),
+        );
     }, [
         start,
         totalProductOnPage,
@@ -52,6 +53,35 @@ const App = () => {
         paginationActiveIndex,
         searchProduct,
     ]);
+
+    // React.useEffect(() => {
+    //     dispatch(changeIsLoading(true));
+    //     const category = paginationActiveIndex === 0 ? '' : `&category=${paginationActiveIndex}`;
+    //     axios
+    //         .get(
+    //             `http://localhost:3000/pizzas?_start=${start}&_limit=${totalProductOnPage}&_sort=${sortirovkaTitle[sortirovkaActiveIndex]}&${category}&name_like=${searchProduct}`,
+    //         )
+    //         .then((res) => {
+    //             dispatch(setProducts(res.data));
+
+    //             dispatch(changeIsLoading(false));
+    //         });
+
+    //     axios
+    //         .get(`http://localhost:3000/pizzas?&${category}&name_like=${searchProduct}`)
+    //         .then((res) => {
+    //             dispatch(setAllProducts(res.data));
+    //             dispatch(changeIsLoading(false));
+    //         });
+    // }, [
+    //     start,
+    //     totalProductOnPage,
+    //     sortirovkaTitle,
+    //     sortirovkaActiveIndex,
+    //     sortirovkaTitle,
+    //     paginationActiveIndex,
+    //     searchProduct,
+    // ]);
 
     return (
         <>

@@ -7,11 +7,11 @@ import ProductEmpty from '../ProductsEmpty/ProductEmpty';
 import { productSelector } from '../../store/slices/productSlice';
 
 const ItemsProducts = (props) => {
-    const { isLoading, products, totalProductOnPage } = useSelector(productSelector);
+    const { status, products, totalProductOnPage } = useSelector(productSelector);
 
     const skeletonProduct = Array(totalProductOnPage).fill(0);
 
-    if (isLoading) {
+    if (status === 'loading') {
         return (
             <div className='content__items'>
                 {skeletonProduct.map((_, index) => (
