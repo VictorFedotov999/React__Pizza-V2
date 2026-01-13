@@ -1,12 +1,13 @@
 import TitleProducts from '../../TitleProducts/TitleProducts';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPaginationActiveIndex } from '../../../store/slices/filterSlice';
+import {
+    categoriesPaginationSelector,
+    setPaginationActiveIndex,
+} from '../../../store/slices/filterSlice';
 
 const CategoriesPagination = () => {
     const dispatch = useDispatch();
-    const { paginationActiveIndex, paginationTitle } = useSelector(
-        (state) => state.filter.categoriesPagination,
-    );
+    const { paginationActiveIndex, paginationTitle } = useSelector(categoriesPaginationSelector);
 
     const onChangePaginationActiveIndex = (index) => {
         dispatch(setPaginationActiveIndex(index));
@@ -25,10 +26,7 @@ const CategoriesPagination = () => {
                     </li>
                 ))}
             </ul>
-            <TitleProducts
-                paginationActiveIndex={paginationActiveIndex}
-                paginationTitle={paginationTitle}
-            />
+            <TitleProducts />
         </div>
     );
 };

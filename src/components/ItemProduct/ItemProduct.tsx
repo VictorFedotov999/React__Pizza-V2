@@ -2,11 +2,12 @@ import React from 'react';
 import ItemProductButton from './ItemProductButton/ItemProductButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductToCart } from '../../store/slices/cartSlice';
+import { productSelector } from '../../store/slices/productSlice';
 
 const ItemProduct = ({ product }) => {
     const dispatch = useDispatch();
+    const { productType } = useSelector(productSelector);
 
-    const typeNames = ['Мясная', 'Традиционная'];
     const [typeName, setTypeName] = React.useState(0);
     const [sizeType, setSizeType] = React.useState(0);
 
@@ -15,7 +16,7 @@ const ItemProduct = ({ product }) => {
             id: product.id,
             imageUrl: product.imageUrl,
             name: product.name,
-            types: typeNames[typeName],
+            types: productType[typeName],
             sizes: product.sizes[sizeType],
             price: product.price,
             category: product.category,
@@ -38,7 +39,7 @@ const ItemProduct = ({ product }) => {
                                 className={typeName === index ? 'active' : ''}
                                 onClick={() => setTypeName(index)}
                             >
-                                {typeNames[type]}
+                                {productType[type]}
                             </li>
                         ))}
                     </ul>
@@ -57,7 +58,12 @@ const ItemProduct = ({ product }) => {
                 <div className='pizza-block__bottom'>
                     <div className='pizza-block__price'>{product.price} Руб</div>
 
-                    <ItemProductButton onAddProductToCart={onAddProductToCart} />
+                    <ItemProductButton
+                        product={product}
+                        onAddProductToCart={onAddProductToCart}
+                        sizeType={sizeType}
+                        typeName={typeName}
+                    />
                 </div>
             </div>
         </>

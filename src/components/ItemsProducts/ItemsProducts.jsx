@@ -3,8 +3,11 @@ import ItemProduct from '../ItemProduct/ItemProduct';
 import AddProducts from './AddProducts';
 import SkeletonProduct from '../SkeletonProduct/SkeletonProduct';
 import ProductEmpty from '../ProductsEmpty/ProductEmpty';
+
+import { productSelector } from '../../store/slices/productSlice';
+
 const ItemsProducts = (props) => {
-    const { isLoading, products, totalProductOnPage } = useSelector((state) => state.product);
+    const { isLoading, products, totalProductOnPage } = useSelector(productSelector);
 
     const skeletonProduct = Array(totalProductOnPage).fill(0);
 

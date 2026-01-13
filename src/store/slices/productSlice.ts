@@ -4,6 +4,7 @@ const initialState = {
     currentPage: 1,
     totalProductOnPage: 8,
     products: [],
+    productType: ['Мясная', 'Традиционная'],
     allProducts: [],
     isLoading: false,
 };
@@ -26,6 +27,8 @@ const productSlice = createSlice({
         },
     },
 });
+
+export const productSelector = (state) => state.product;
 
 export const { setProducts, changeCurrentPage, setAllProducts, changeIsLoading } =
     productSlice.actions;

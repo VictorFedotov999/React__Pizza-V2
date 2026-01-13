@@ -4,9 +4,10 @@ import CartsItems from '../CartsItems/CartsItems';
 import AboutOrder from '../AboutOrder/AboutOrder';
 import BasketEmpty from '../BasketEmpy/BasketEmpy';
 import { useSelector } from 'react-redux';
+import { cartSelector } from '../../store/slices/cartSlice';
 
 const PageBasket = () => {
-    const { productsCart } = useSelector((state) => state.cart);
+    const { productsCart } = useSelector(cartSelector);
     if (productsCart.length === 0) {
         return <BasketEmpty />;
     }

@@ -1,13 +1,12 @@
 import ReactPaginate from 'react-paginate';
 import { changeCurrentPage } from '../../store/slices/productSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { productSelector } from '../../store/slices/productSlice';
 const Pagination = () => {
     const dispatch = useDispatch();
 
-    const { totalProductOnPage, currentPage, allProducts, isLoading } = useSelector(
-        (state) => state.product,
-    );
+    const { totalProductOnPage, currentPage, allProducts, isLoading } =
+        useSelector(productSelector);
 
     const handlePageClick = (event) => {
         const newPage = event.selected + 1;

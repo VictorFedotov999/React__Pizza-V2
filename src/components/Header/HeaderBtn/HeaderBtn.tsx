@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux';
-import HeaderBtnSvg from './HeaderBtnSvg';
 import { Link } from 'react-router-dom';
+import HeaderBtnSvg from './HeaderBtnSvg';
+import { cartSelector } from '../../../store/slices/cartSlice';
+
 const HeaderBtn = () => {
-    const { totalCount, totalOrder } = useSelector((state) => state.cart);
+    const { totalCount, totalOrder } = useSelector(cartSelector);
 
     return (
         <Link to='/cart'>

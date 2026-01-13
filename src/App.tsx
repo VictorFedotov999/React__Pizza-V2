@@ -1,25 +1,27 @@
-import '../src/scss/app.scss';
+import { Route, Routes } from 'react-router';
 import React from 'react';
 import axios from 'axios';
-import { Route, Routes } from 'react-router';
+import '../src/scss/app.scss';
 import Header from './components/Header/Header';
 import PageBasket from './components/PageBasket/PageBasket';
 import PageProducts from './components/PageProducts/PageProducts';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProducts, setAllProducts, changeIsLoading } from './store/slices/productSlice';
-import ProductEmpty from './components/ProductsEmpty/ProductEmpty';
+
+import { productSelector } from './store/slices/productSlice';
+import {
+    categoriesPaginationSelector,
+    categoriesSortirovkaSelector,
+    searchProductSelector,
+} from './store/slices/filterSlice';
 
 const App = () => {
     const dispatch = useDispatch();
-    const { allProducts, totalProductOnPage, currentPage, products } = useSelector(
-        (state) => state.product,
-    );
 
-    const { paginationActiveIndex } = useSelector((state) => state.filter.categoriesPagination);
-    const { sortirovkaActiveIndex, sortirovkaTitle } = useSelector(
-        (state) => state.filter.categoriesSortirovka,
-    );
-    const { searchProduct } = useSelector((state) => state.filter);
+    const { totalProductOnPage, currentPage } = useSelector(productSelector);
+    const { paginationActiveIndex } = useSelector(categoriesPaginationSelector);
+    const { sortirovkaActiveIndex, sortirovkaTitle } = useSelector(categoriesSortirovkaSelector);
+    const { searchProduct } = useSelector(searchProductSelector);
 
     const start = (currentPage - 1) * totalProductOnPage;
     React.useEffect(() => {

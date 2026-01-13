@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-
+import { cartSelector } from '../../../store/slices/cartSlice';
 const CartOrderDetails = () => {
-    const { totalCount, totalOrder } = useSelector((state) => state.cart);
+    const { totalCount, totalOrder } = useSelector(cartSelector);
 
     return (
         <>

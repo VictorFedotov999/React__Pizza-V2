@@ -89,6 +89,8 @@ const cartSlice = createSlice({
     },
 });
 
+export const cartSelector = (state) => state.cart;
+
 export const { addProductToCart, clearCart, plusCount, minusCount, removeProduct } =
     cartSlice.actions;
 

@@ -8,6 +8,7 @@ const initialState = {
 
     categoriesSortirovka: {
         sortirovkaActiveIndex: 0,
+
         sortirovkaTitle: ['rating', 'price', 'name'],
     },
     searchProduct: '',
@@ -30,6 +31,10 @@ const filterSlice = createSlice({
         },
     },
 });
+
+export const categoriesPaginationSelector = (state) => state.filter.categoriesPagination;
+export const categoriesSortirovkaSelector = (state) => state.filter.categoriesSortirovka;
+export const searchProductSelector = (state) => state.filter;
 
 export const { setPaginationActiveIndex, setSortirovkaActiveIndex, setSearchProduct } =
     filterSlice.actions;

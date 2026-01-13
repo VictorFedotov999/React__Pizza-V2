@@ -1,14 +1,27 @@
 import { useSelector } from 'react-redux';
 import ItemProductButtonSvg from './ItemProductButtonSvg';
+import { productSelector } from '../../../store/slices/productSlice';
+import { cartSelector } from '../../../store/slices/cartSlice';
+const ItemProductButton = ({ onAddProductToCart, product, sizeType, typeName }) => {
+    const { productType } = useSelector(productSelector);
+    const { productsCart } = useSelector(cartSelector);
 
-const ItemProductButton = ({ onAddProductToCart }) => {
+    const currentProduct = productsCart
+        .filter(
+            (obj) =>
+                obj.id === product.id &&
+                obj.types === productType[typeName] &&
+                obj.sizes === product.sizes[sizeType],
+        )
+        .reduce((sum, item) => sum + item.count, 0);
+
     return (
         <>
             <div onClick={onAddProductToCart} className='button button--outline button--add'>
                 <ItemProductButtonSvg />
                 <span>Добавить</span>
 
-                <i>1</i>
+                {currentProduct > 0 && <i>{currentProduct}</i>}
             </div>
         </>
     );
