@@ -1,14 +1,14 @@
-import { Route, Routes } from 'react-router';
 import React from 'react';
-
+import { Route, Routes } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 import '../src/scss/app.scss';
 import Header from './components/Header/Header';
 import PageBasket from './components/PageBasket/PageBasket';
 import PageProducts from './components/PageProducts/PageProducts';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllPizzas, fetchPizzas } from './store/slices/productSlice';
+import ProductInfoId from './components/ProductInfoId/ProductInfoId';
+import NotFindPage from './components/NotFindPage/NotFindPage';
+import { fetchAllPizzas, fetchPizzas, productSelector } from './store/slices/productSlice';
 
-import { productSelector } from './store/slices/productSlice';
 import {
     categoriesPaginationSelector,
     categoriesSortirovkaSelector,
@@ -24,72 +24,38 @@ const App = () => {
     const { searchProduct } = useSelector(searchProductSelector);
 
     const start = (currentPage - 1) * totalProductOnPage;
+    const sort = sortirovkaTitle[sortirovkaActiveIndex];
     const category = paginationActiveIndex === 0 ? '' : `&category=${paginationActiveIndex}`;
+    const searchProductItem = searchProduct.length > 1 ? `&name_like=${searchProduct}` : '';
 
     React.useEffect(() => {
         dispatch(
             fetchPizzas({
                 start,
                 totalProductOnPage,
-                sortirovkaTitle,
-                sortirovkaActiveIndex,
+                sort,
                 category,
-                searchProduct,
+                searchProductItem,
             }),
         );
 
         dispatch(
             fetchAllPizzas({
                 category,
-                searchProduct,
+                searchProductItem,
             }),
         );
-    }, [
-        start,
-        totalProductOnPage,
-        sortirovkaTitle,
-        sortirovkaActiveIndex,
-        sortirovkaTitle,
-        paginationActiveIndex,
-        searchProduct,
-    ]);
-
-    // React.useEffect(() => {
-    //     dispatch(changeIsLoading(true));
-    //     const category = paginationActiveIndex === 0 ? '' : `&category=${paginationActiveIndex}`;
-    //     axios
-    //         .get(
-    //             `http://localhost:3000/pizzas?_start=${start}&_limit=${totalProductOnPage}&_sort=${sortirovkaTitle[sortirovkaActiveIndex]}&${category}&name_like=${searchProduct}`,
-    //         )
-    //         .then((res) => {
-    //             dispatch(setProducts(res.data));
-
-    //             dispatch(changeIsLoading(false));
-    //         });
-
-    //     axios
-    //         .get(`http://localhost:3000/pizzas?&${category}&name_like=${searchProduct}`)
-    //         .then((res) => {
-    //             dispatch(setAllProducts(res.data));
-    //             dispatch(changeIsLoading(false));
-    //         });
-    // }, [
-    //     start,
-    //     totalProductOnPage,
-    //     sortirovkaTitle,
-    //     sortirovkaActiveIndex,
-    //     sortirovkaTitle,
-    //     paginationActiveIndex,
-    //     searchProduct,
-    // ]);
+    }, [start, totalProductOnPage, sort, category, searchProductItem]);
 
     return (
         <>
-            <div className='wrapper'>
+            <div className='wrapper '>
                 <Header />
                 <Routes>
                     <Route path='' element={<PageProducts />} />
                     <Route path='/cart' element={<PageBasket />} />
+                    <Route path='/:id' element={<ProductInfoId />} />
+                    <Route path='/*' element={<NotFindPage />} />
                 </Routes>
             </div>
         </>

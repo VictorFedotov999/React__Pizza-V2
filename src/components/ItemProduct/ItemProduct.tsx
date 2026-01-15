@@ -3,9 +3,11 @@ import ItemProductButton from './ItemProductButton/ItemProductButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductToCart } from '../../store/slices/cartSlice';
 import { productSelector } from '../../store/slices/productSlice';
+import { useNavigate } from 'react-router-dom';
 
 const ItemProduct = ({ product }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { productType } = useSelector(productSelector);
 
     const [typeName, setTypeName] = React.useState(0);
@@ -26,10 +28,19 @@ const ItemProduct = ({ product }) => {
         dispatch(addProductToCart(productCart));
     };
 
+    const changeProduct = () => {
+        navigate(`/${product.id}`);
+    };
+
     return (
         <>
             <div className='pizza-block'>
-                <img className='pizza-block__image' src={product.imageUrl} alt='Pizza' />
+                <img
+                    className='pizza-block__image'
+                    src={product.imageUrl}
+                    alt='Pizza'
+                    onClick={changeProduct}
+                />
                 <h4 className='pizza-block__title'>{product.name}</h4>
                 <div className='pizza-block__selector'>
                     <ul>

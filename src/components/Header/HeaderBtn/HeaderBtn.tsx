@@ -1,22 +1,26 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import HeaderBtnSvg from './HeaderBtnSvg';
 import { cartSelector } from '../../../store/slices/cartSlice';
 
 const HeaderBtn = () => {
     const { totalCount, totalOrder } = useSelector(cartSelector);
-
+    const location = useLocation();
     return (
-        <Link to='/cart'>
+        <>
             <div className='header__cart'>
-                <div className='button button--cart'>
-                    <span>{totalOrder} ₽</span>
-                    <div className='button__delimiter'></div>
-                    <HeaderBtnSvg />
-                    <span>{totalCount}</span>
-                </div>
+                {location.pathname !== '/cart' && (
+                    <Link to='/cart'>
+                        <div className='button button--cart'>
+                            <span>{totalOrder} ₽</span>
+                            <div className='button__delimiter'></div>
+                            <HeaderBtnSvg />
+                            <span>{totalCount}</span>
+                        </div>
+                    </Link>
+                )}
             </div>
-        </Link>
+        </>
     );
 };
 

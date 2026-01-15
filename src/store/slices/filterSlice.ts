@@ -12,6 +12,8 @@ const initialState = {
         sortirovkaTitle: ['rating', 'price', 'name'],
     },
     searchProduct: '',
+
+    url: '',
 };
 
 const filterSlice = createSlice({

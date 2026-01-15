@@ -1,12 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import debounce from 'lodash/debounce';
 import iconSearch from '../../../assets/img/search.png';
 import iconDelete from '../../../assets/img/krestik.png';
 import { setSearchProduct } from '../../../store/slices/filterSlice';
-import { useDispatch } from 'react-redux';
-import debounce from 'lodash/debounce';
 
 const HeaderFilter = () => {
     const dispatch = useDispatch();
+    const location = useLocation();
     const [value, setValue] = React.useState('');
 
     const inputRef = React.useRef();
@@ -32,6 +34,10 @@ const HeaderFilter = () => {
         setValue(event.target.value);
         updateSearchValue(event.target.value);
     };
+
+    if (location.pathname !== '/') {
+        return null;
+    }
     return (
         <>
             <div className='header-filter'>

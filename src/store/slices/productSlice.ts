@@ -1,26 +1,21 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+const baseUrl = 'http://localhost:3000/pizzas?';
 
 export const fetchPizzas = createAsyncThunk('pizza/fetchPizzasStatus', async (params) => {
-    const {
-        start,
-        totalProductOnPage,
-        sortirovkaTitle,
-        sortirovkaActiveIndex,
-        category,
-        searchProduct,
-    } = params;
+    const { start, totalProductOnPage, sort, category, searchProductItem } = params;
 
-    const url = `http://localhost:3000/pizzas?_start=${start}&_limit=${totalProductOnPage}&_sort=${sortirovkaTitle[sortirovkaActiveIndex]}&${category}&name_like=${searchProduct}`;
+    const url = `${baseUrl}?_start=${start}&_limit=${totalProductOnPage}&_sort=${sort}${category}${searchProductItem}`;
     const { data } = await axios.get(url);
 
     return data;
 });
 
 export const fetchAllPizzas = createAsyncThunk('pizza/fetchAllPizzasStatus', async (params) => {
-    const { category, searchProduct } = params;
+    const { category, searchProductItem } = params;
 
-    const url = `http://localhost:3000/pizzas?&${category}&name_like=${searchProduct}`;
+    const url = `${baseUrl}?${category}${searchProductItem}`;
     const { data } = await axios.get(url);
     return data;
 });
