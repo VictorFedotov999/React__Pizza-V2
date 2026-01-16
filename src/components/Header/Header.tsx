@@ -1,7 +1,7 @@
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 import HeaderFilter from './HeaderFilter/HeaderFilter';
 import HeaderBtn from './HeaderBtn/HeaderBtn';
-
+import HeaderChangeTheme from './HeaderChangeTheme/HeaderChangeTheme';
 const Header = () => {
     return (
         <div className='header'>
@@ -9,6 +9,7 @@ const Header = () => {
                 <HeaderLogo />
                 <HeaderFilter />
                 <HeaderBtn />
+                <HeaderChangeTheme />
             </div>
         </div>
     );

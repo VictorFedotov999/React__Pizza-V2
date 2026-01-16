@@ -92,7 +92,7 @@ const ProductInfoId = () => {
 
                     <div className='product-info__options'>
                         <div className='product-info__section'>
-                            <h3>Выберите тип теста:</h3>
+                            <h3 className='prouduct__info-type'>Выберите тип теста:</h3>
                             <div className='product-info__types'>
                                 {product.types.map((type, index) => (
                                     <div
@@ -109,7 +109,7 @@ const ProductInfoId = () => {
                         </div>
 
                         <div className='product-info__section'>
-                            <h3>Выберите размер:</h3>
+                            <h3 className='product__info-size'>Выберите размер:</h3>
                             <div className='product-info__sizes'>
                                 {product.sizes.map((size, index) => (
                                     <div

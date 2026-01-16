@@ -7,7 +7,12 @@ import PageBasket from './components/PageBasket/PageBasket';
 import PageProducts from './components/PageProducts/PageProducts';
 import ProductInfoId from './components/ProductInfoId/ProductInfoId';
 import NotFindPage from './components/NotFindPage/NotFindPage';
-import { fetchAllPizzas, fetchPizzas, productSelector } from './store/slices/productSlice';
+import {
+    changeCurrentPage,
+    fetchAllPizzas,
+    fetchPizzas,
+    productSelector,
+} from './store/slices/productSlice';
 
 import {
     categoriesPaginationSelector,
@@ -25,6 +30,7 @@ const App = () => {
 
     const start = (currentPage - 1) * totalProductOnPage;
     const sort = sortirovkaTitle[sortirovkaActiveIndex];
+
     const category = paginationActiveIndex === 0 ? '' : `&category=${paginationActiveIndex}`;
     const searchProductItem = searchProduct.length > 1 ? `&name_like=${searchProduct}` : '';
 

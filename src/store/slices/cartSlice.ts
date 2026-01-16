@@ -24,7 +24,9 @@ const cartSlice = createSlice({
                 state.totalCount += 1;
                 state.totalOrder += oneProduct.price;
             } else {
-                state.productsCart.push({ ...newProductCart });
+                state.productsCart.push({
+                    ...newProductCart,
+                });
                 state.totalCount += 1;
                 state.totalOrder += newProductCart.price;
             }

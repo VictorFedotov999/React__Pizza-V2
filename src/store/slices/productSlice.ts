@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const baseUrl = 'http://localhost:3000/pizzas?';
+const baseUrl = 'http://localhost:3000/pizzas';
 
 export const fetchPizzas = createAsyncThunk('pizza/fetchPizzasStatus', async (params) => {
     const { start, totalProductOnPage, sort, category, searchProductItem } = params;
 
     const url = `${baseUrl}?_start=${start}&_limit=${totalProductOnPage}&_sort=${sort}${category}${searchProductItem}`;
     const { data } = await axios.get(url);
-
+    console.log(url);
     return data;
 });
 
@@ -40,6 +40,7 @@ const productSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+
             .addCase(fetchPizzas.pending, (state) => {
                 state.status = 'loading';
                 state.products = [];
@@ -49,11 +50,16 @@ const productSlice = createSlice({
                 state.status = 'success';
                 state.products = action.payload;
                 state.error = null;
+
+                if (action.payload.length === 0 && state.currentPage > 1) {
+                    state.currentPage = 1;
+                }
             })
             .addCase(fetchPizzas.rejected, (state, action) => {
                 state.status = 'error';
                 state.products = [];
                 state.error = action.error.message;
+                state.currentPage = 1;
             })
 
             .addCase(fetchAllPizzas.pending, (state) => {

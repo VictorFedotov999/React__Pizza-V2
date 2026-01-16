@@ -23,7 +23,7 @@ const CategoriesSortirovka = () => {
         <div className='sort '>
             <div className='sort__label'>
                 <CategoriesSortirovkaSvgArrow />
-                <b>Сортировка по:</b>
+                <b className='sort_title'>Сортировка по:</b>
                 <span onClick={() => onClickPopup()}>{categories[sortirovkaActiveIndex]}</span>
             </div>
             <div className={openPopup ? 'sort__popup' : 'sort__popup none'}>
