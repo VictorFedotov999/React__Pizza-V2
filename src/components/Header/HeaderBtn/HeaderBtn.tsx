@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import HeaderBtnSvg from './HeaderBtnSvg';
 import { cartSelector } from '../../../store/slices/cartSlice';
-
+import HeaderChangeTheme from '../HeaderChangeTheme/HeaderChangeTheme';
 const HeaderBtn = () => {
     const { totalCount, totalOrder } = useSelector(cartSelector);
     const location = useLocation();
@@ -19,6 +19,8 @@ const HeaderBtn = () => {
                         </div>
                     </Link>
                 )}
+
+                <HeaderChangeTheme />
             </div>
         </>
     );

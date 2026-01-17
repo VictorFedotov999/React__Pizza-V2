@@ -1,4 +1,6 @@
-const ItemProductButtonSvg = () => {
+import type React from 'react';
+
+const ItemProductButtonSvg: React.FC = () => {
     return (
         <>
             <svg

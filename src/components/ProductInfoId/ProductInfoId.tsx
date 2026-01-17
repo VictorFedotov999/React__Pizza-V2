@@ -1,40 +1,30 @@
 import React from 'react';
-import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { productSelector } from '../../store/slices/productSlice';
 import ButtonBack from '../ButtonBack/ButtonBack';
 import ProductButtonToCart from './ProductButtonToCart';
 import ProductSvg from './ProductSvg';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import type { AppDispatch } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPizzaId, productSelector } from '../../store/slices/productSlice';
 import { addProductToCart } from '../../store/slices/cartSlice';
+import { createItemProduct } from '../../store/utils/utils';
 
-const ProductInfoId = () => {
-    const dispatch = useDispatch();
+const ProductInfoId: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
+
+    const { productId } = useSelector(productSelector);
     const { productType } = useSelector(productSelector);
-    const [product, setProduct] = React.useState();
-    const navigate = useNavigate();
+
     const [activeType, setActiveType] = React.useState(0);
     const [activeSize, setActiveSize] = React.useState(0);
 
-    const { id } = useParams();
+    const { id } = useParams<{ id: string }>();
 
     React.useEffect(() => {
-        async function fetchPizza() {
-            try {
-                const { data } = await axios.get(`http://localhost:3000/pizzas/${id}`);
-                setProduct(data);
-            } catch (error) {
-                console.error('Ошибка загрузки товара:', error);
-            }
-        }
-
-        fetchPizza();
+        dispatch(fetchPizzaId({ id }));
     }, [id]);
 
-    const typeNames = ['Мясная', 'Традиционная'];
-
-    if (!product) {
+    if (!productId || !productId.id) {
         return (
             <div className='container'>
                 <div className='loading'>Загрузка...</div>
@@ -43,17 +33,8 @@ const ProductInfoId = () => {
     }
 
     const onAddProductToCart = () => {
-        const productCart = {
-            id: product.id,
-            imageUrl: product.imageUrl,
-            name: product.name,
-            types: productType[activeType],
-            sizes: product.sizes[activeSize],
-            price: product.price,
-            category: product.category,
-            rating: product.rating,
-            count: 1,
-        };
+        const productCart = createItemProduct(productId, productType, activeType, activeSize);
+
         dispatch(addProductToCart(productCart));
     };
 
@@ -65,27 +46,27 @@ const ProductInfoId = () => {
 
             <div className='product-info__content'>
                 <div className='product-info__image'>
-                    <img src={product.imageUrl} alt={product.name} />
+                    <img src={productId.imageUrl} alt={productId.name} />
                 </div>
 
                 <div className='product-info__details'>
-                    <h1 className='product-info__title'>{product.name}</h1>
+                    <h1 className='product-info__title'>{productId.name}</h1>
 
                     <div className='product-info__meta'>
                         <div className='product-info__rating'>
                             <ProductSvg />
-                            {product.rating}/10
+                            {productId.rating}/10
                         </div>
                         <div className='product-info__category'>
                             Категория: {productType[activeType]}
                         </div>
                     </div>
 
-                    <div className='product-info__price'>{product.price} ₽</div>
+                    <div className='product-info__price'>{productId.price} ₽</div>
 
                     <div className='product-info__description'>
                         <p>
-                            Вкуснейшая пицца "{product.name}" с самым лучшим сочетанием
+                            Вкуснейшая пицца "{productId.name}" с самым лучшим сочетанием
                             ингредиентов. Идеальный выбор для любого случая!
                         </p>
                     </div>
@@ -94,7 +75,7 @@ const ProductInfoId = () => {
                         <div className='product-info__section'>
                             <h3 className='prouduct__info-type'>Выберите тип теста:</h3>
                             <div className='product-info__types'>
-                                {product.types.map((type, index) => (
+                                {productId.types.map((type, index) => (
                                     <div
                                         key={index}
                                         className={`option-item ${
@@ -102,7 +83,7 @@ const ProductInfoId = () => {
                                         }`}
                                         onClick={() => setActiveType(index)}
                                     >
-                                        {typeNames[type]}
+                                        {productType[type]}
                                     </div>
                                 ))}
                             </div>
@@ -111,7 +92,7 @@ const ProductInfoId = () => {
                         <div className='product-info__section'>
                             <h3 className='product__info-size'>Выберите размер:</h3>
                             <div className='product-info__sizes'>
-                                {product.sizes.map((size, index) => (
+                                {productId.sizes.map((size, index) => (
                                     <div
                                         key={index}
                                         className={`option-item ${

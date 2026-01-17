@@ -181,6 +181,22 @@ body.dark {
         }
     }
 
+    b {
+        color: #fff;
+    }
+
+    .cart--empty h2 {
+        color: #fff;
+    }
+
+    .cart__item-price b {
+        color: #fff;
+    }
+
+    .cart__item-count b {
+        color: #fff;
+    }
+
     .header-input {
         background: rgba(255, 255, 255, 0.04);
         border-color: rgba(255, 255, 255, 0.08);
@@ -408,25 +424,15 @@ body:not(.dark) {
         &:active {
             transform: translateY(-1px) scale(0.95);
         }
-
-        &::before {
-            content: '☀️';
-            position: absolute;
-            transition: all 0.35s ease;
-        }
     }
 }
 
 /* Когда включена тёмная тема */
 body.dark .changeTheme button {
-    background: linear-gradient(135deg, #5f6cff, #8fa4ff);
+    background: linear-gradient(135deg, #5f6cff, #18181a);
     box-shadow: 0 10px 25px rgba(120, 140, 255, 0.45);
 
-    &::before {
-        content: '🌙';
-    }
-
     &:hover {
-        box-shadow: 0 14px 40px rgba(120, 140, 255, 0.6);
+        box-shadow: 0 14px 40px rgba(17, 18, 20, 0.6);
     }
 }

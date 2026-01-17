@@ -1,4 +1,6 @@
-const CartClearSvg = () => {
+import React from 'react';
+
+const CartClearSvg: React.FC = () => {
     return (
         <>
             <svg

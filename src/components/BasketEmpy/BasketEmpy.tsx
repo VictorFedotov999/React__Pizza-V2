@@ -1,6 +1,6 @@
 import ImgBasketEmpy from '../../assets/img/empty-cart.png';
 import { Link } from 'react-router-dom';
-const BasketEmpty = () => {
+const BasketEmpty: React.FC = () => {
     return (
         <>
             <div className='container container--cart '>

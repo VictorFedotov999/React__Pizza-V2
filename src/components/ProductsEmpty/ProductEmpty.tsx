@@ -1,6 +1,7 @@
+import type React from 'react';
 import ProductEmptyPhoto from '../../assets/img/ProductEmpty.png';
 
-const ProductEmpty = () => {
+const ProductEmpty: React.FC = () => {
     return (
         <>
             <div className='container container--cart '>

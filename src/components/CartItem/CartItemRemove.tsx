@@ -1,15 +1,20 @@
-import { useDispatch, useSelector } from 'react-redux';
+import type React from 'react';
 import CartItemRemoveSvg from './CartItemCount/CartItemRemoveSvg';
+import type { AppDispatch } from '../../store/store';
+import { useDispatch } from 'react-redux';
 import { removeProduct } from '../../store/slices/cartSlice';
-const CartItemRemove = ({ product }) => {
-    const dispatch = useDispatch();
+import type { cartProductType } from '../../ts/cartSliceType';
+import { createUpdateItem } from '../../store/utils/utils';
+
+interface CartItemRemove {
+    product: cartProductType;
+}
+
+const CartItemRemove: React.FC<CartItemRemove> = ({ product }) => {
+    const dispatch = useDispatch<AppDispatch>();
 
     const onRemoveProduct = () => {
-        const obj = {
-            id: product.id,
-            types: product.types,
-            sizes: product.sizes,
-        };
+        const obj = createUpdateItem(product);
         dispatch(removeProduct(obj));
     };
 

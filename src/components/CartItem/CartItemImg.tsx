@@ -1,4 +1,8 @@
-const CartItemImg = ({ productImg }) => {
+interface CartItemImgProps {
+    productImg: string;
+}
+
+const CartItemImg: React.FC<CartItemImgProps> = ({ productImg }) => {
     return (
         <>
             <div className='cart__item-img'>

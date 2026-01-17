@@ -2,7 +2,21 @@ import { useSelector } from 'react-redux';
 import ItemProductButtonSvg from './ItemProductButtonSvg';
 import { productSelector } from '../../../store/slices/productSlice';
 import { cartSelector } from '../../../store/slices/cartSlice';
-const ItemProductButton = ({ onAddProductToCart, product, sizeType, typeName }) => {
+import type { ProductType } from '../../../ts/productSliceType';
+
+interface ItemProductButtonProps {
+    onAddProductToCart: () => void;
+    product: ProductType;
+    sizeType: number;
+    typeName: number;
+}
+
+const ItemProductButton: React.FC<ItemProductButtonProps> = ({
+    onAddProductToCart,
+    product,
+    sizeType,
+    typeName,
+}) => {
     const { productType } = useSelector(productSelector);
     const { productsCart } = useSelector(cartSelector);
 

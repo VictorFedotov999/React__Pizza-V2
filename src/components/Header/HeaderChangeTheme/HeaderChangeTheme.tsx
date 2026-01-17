@@ -1,4 +1,6 @@
 import React from 'react';
+import blackTheme from '../../../assets/btn__tema-black.svg';
+import whiteTheme from '../../../assets/btn__tema-white.svg';
 
 const HeaderChangeTheme = () => {
     const [changeTheme, setChangeTheme] = React.useState(false);
@@ -21,7 +23,9 @@ const HeaderChangeTheme = () => {
 
     return (
         <div className='changeTheme' onClick={onChangeTheme}>
-            <button />
+            <button>
+                <img src={changeTheme ? blackTheme : whiteTheme} alt='' />
+            </button>
         </div>
     );
 };

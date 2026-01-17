@@ -1,28 +1,28 @@
-import { useDispatch } from 'react-redux';
+import React from 'react';
+
 import CartItemButtonMinus from './CartItemButtonMinus';
 import CartItemButtonPlus from './CartItemButtonPlus';
+import type { AppDispatch } from '../../../store/store';
+import { useDispatch } from 'react-redux';
 import { minusCount, plusCount } from '../../../store/slices/cartSlice';
+import { createUpdateItem } from '../../../store/utils/utils';
+import type { cartProductType } from '../../../ts/cartSliceType';
 
-const CartItemCount = ({ productCount, product }) => {
-    const dispatch = useDispatch();
+interface CartItemCountProps {
+    productCount: number;
+    product: cartProductType;
+}
+
+const CartItemCount: React.FC<CartItemCountProps> = ({ productCount, product }) => {
+    const dispatch = useDispatch<AppDispatch>();
 
     const onClickPlus = () => {
-        const productCurrent = {
-            id: product.id,
-            types: product.types,
-            sizes: product.sizes,
-            count: product.count,
-        };
+        const productCurrent = createUpdateItem(product);
         dispatch(plusCount(productCurrent));
     };
 
     const onClickMinus = () => {
-        const productCurrent = {
-            id: product.id,
-            types: product.types,
-            sizes: product.sizes,
-            count: product.count,
-        };
+        const productCurrent = createUpdateItem(product);
         dispatch(minusCount(productCurrent));
     };
 

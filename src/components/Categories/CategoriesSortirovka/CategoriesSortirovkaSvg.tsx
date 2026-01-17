@@ -1,4 +1,6 @@
-const CategoriesSortirovkaSvgArrow = () => {
+import type React from 'react';
+
+const CategoriesSortirovkaSvgArrow: React.FC = () => {
     return (
         <>
             <svg

@@ -1,6 +1,6 @@
-type PropsType = {};
+import React from 'react';
 
-const CartItemRemoveSvg = (props: PropsType) => {
+const CartItemRemoveSvg: React.FC = () => {
     return (
         <>
             <svg

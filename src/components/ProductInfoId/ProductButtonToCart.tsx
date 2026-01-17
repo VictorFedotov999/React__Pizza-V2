@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-
-const ProductButtonToCart = () => {
+import React from 'react';
+const ProductButtonToCart: React.FC = () => {
     return (
         <>
             <div className='product-info__add-to-cart'>

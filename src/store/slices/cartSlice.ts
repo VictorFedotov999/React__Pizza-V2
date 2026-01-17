@@ -1,6 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+// import { store } from './../store';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { isSameProduct } from '../utils/utils';
+import type { RootState } from '../store';
+import type { cartProductType, cartSliceType, IdTypesSizesType } from '../../ts/cartSliceType';
 
-const initialState = {
+const initialState: cartSliceType = {
     productsCart: [],
     totalCount: 0,
     totalOrder: 0,
@@ -10,14 +14,11 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addProductToCart(state, action) {
+        addProductToCart(state, action: PayloadAction<cartProductType>) {
             const newProductCart = action.payload;
 
-            const oneProduct = state.productsCart.find(
-                (product) =>
-                    product.id === newProductCart.id &&
-                    product.types === newProductCart.types &&
-                    product.sizes === newProductCart.sizes,
+            const oneProduct = state.productsCart.find((product) =>
+                isSameProduct(product, newProductCart),
             );
             if (oneProduct) {
                 oneProduct.count += 1;
@@ -32,30 +33,23 @@ const cartSlice = createSlice({
             }
         },
 
-        clearCart(state) {
-            state.productsCart = [];
-        },
-
-        plusCount(state, action) {
+        plusCount(state, action: PayloadAction<IdTypesSizesType>) {
             const productCurrent = action.payload;
 
-            const productPlus = state.productsCart.find(
-                (product) =>
-                    product.id === productCurrent.id &&
-                    product.types === productCurrent.types &&
-                    product.sizes === productCurrent.sizes,
+            const productPlus = state.productsCart.find((product) =>
+                isSameProduct(product, productCurrent),
             );
-            productPlus.count += 1;
-            state.totalCount += 1;
-            state.totalOrder += productPlus.price;
+
+            if (productPlus) {
+                productPlus.count += 1;
+                state.totalCount += 1;
+                state.totalOrder += productPlus.price;
+            }
         },
-        minusCount(state, action) {
+        minusCount(state, action: PayloadAction<IdTypesSizesType>) {
             const productCurrent = action.payload;
-            const productMinusIndex = state.productsCart.findIndex(
-                (product) =>
-                    product.id === productCurrent.id &&
-                    product.sizes === productCurrent.sizes &&
-                    product.types === productCurrent.types,
+            const productMinusIndex = state.productsCart.findIndex((product) =>
+                isSameProduct(product, productCurrent),
             );
 
             if (productMinusIndex !== -1) {
@@ -71,14 +65,15 @@ const cartSlice = createSlice({
                 }
             }
         },
-
-        removeProduct(state, action) {
+        clearCart(state) {
+            state.productsCart = [];
+            state.totalCount = 0;
+            state.totalOrder = 0;
+        },
+        removeProduct(state, action: PayloadAction<IdTypesSizesType>) {
             const removeProduct = action.payload;
-            const indexToRemove = state.productsCart.findIndex(
-                (product) =>
-                    product.id === removeProduct.id &&
-                    product.types === removeProduct.types &&
-                    product.sizes === removeProduct.sizes,
+            const indexToRemove = state.productsCart.findIndex((product: cartProductType) =>
+                isSameProduct(product, removeProduct),
             );
 
             if (indexToRemove !== -1) {
@@ -91,7 +86,7 @@ const cartSlice = createSlice({
     },
 });
 
-export const cartSelector = (state) => state.cart;
+export const cartSelector = (state: RootState) => state.cart;
 
 export const { addProductToCart, clearCart, plusCount, minusCount, removeProduct } =
     cartSlice.actions;

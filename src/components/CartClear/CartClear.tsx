@@ -1,8 +1,11 @@
-import { useDispatch } from 'react-redux';
+import type React from 'react';
 import CartClearSvg from './CartClearSvg';
+import { useDispatch } from 'react-redux';
 import { clearCart } from '../../store/slices/cartSlice';
-const CartClear = () => {
-    const dispatch = useDispatch();
+import type { AppDispatch } from '../../store/store';
+
+const CartClear: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
     const onClearCart = () => {
         dispatch(clearCart());
     };

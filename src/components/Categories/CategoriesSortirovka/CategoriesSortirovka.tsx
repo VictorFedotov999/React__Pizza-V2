@@ -1,11 +1,14 @@
 import React from 'react';
 import CategoriesSortirovkaSvgArrow from '../../Categories/CategoriesSortirovka/CategoriesSortirovkaSvg';
-import { setSortirovkaActiveIndex } from '../../../store/slices/filterSlice';
+import type { AppDispatch } from '../../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { categoriesSortirovkaSelector } from '../../../store/slices/filterSlice';
+import {
+    setSortirovkaActiveIndex,
+    categoriesSortirovkaSelector,
+} from '../../../store/slices/filterSlice';
 
-const CategoriesSortirovka = () => {
-    const dispatch = useDispatch();
+const CategoriesSortirovka: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
     const categories = ['популярности', 'цене', 'алфавиту'];
 
     const { sortirovkaActiveIndex } = useSelector(categoriesSortirovkaSelector);
@@ -28,7 +31,7 @@ const CategoriesSortirovka = () => {
             </div>
             <div className={openPopup ? 'sort__popup' : 'sort__popup none'}>
                 <ul>
-                    {categories.map((type, index) => (
+                    {categories.map((type: string, index: number) => (
                         <li
                             key={`${type}-${index}`}
                             onClick={() => onChangeSortirovkaActiveIndex(index)}

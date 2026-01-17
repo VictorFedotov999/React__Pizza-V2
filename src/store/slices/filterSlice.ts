@@ -1,6 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import type { RootState } from '../store';
+import type { filterSliceType } from '../../ts/filterSliceType';
 
-const initialState = {
+const initialState: filterSliceType = {
     categoriesPagination: {
         paginationActiveIndex: 0,
         paginationTitle: ['Все', 'Мясная', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'],
@@ -12,31 +14,29 @@ const initialState = {
         sortirovkaTitle: ['rating', 'price', 'name'],
     },
     searchProduct: '',
-
-    url: '',
 };
 
 const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
-        setPaginationActiveIndex(state, action) {
+        setPaginationActiveIndex(state, action: PayloadAction<number>) {
             state.categoriesPagination.paginationActiveIndex = action.payload;
         },
 
-        setSortirovkaActiveIndex(state, action) {
+        setSortirovkaActiveIndex(state, action: PayloadAction<number>) {
             state.categoriesSortirovka.sortirovkaActiveIndex = action.payload;
         },
 
-        setSearchProduct(state, action) {
+        setSearchProduct(state, action: PayloadAction<string>) {
             state.searchProduct = action.payload;
         },
     },
 });
 
-export const categoriesPaginationSelector = (state) => state.filter.categoriesPagination;
-export const categoriesSortirovkaSelector = (state) => state.filter.categoriesSortirovka;
-export const searchProductSelector = (state) => state.filter;
+export const categoriesPaginationSelector = (state: RootState) => state.filter.categoriesPagination;
+export const categoriesSortirovkaSelector = (state: RootState) => state.filter.categoriesSortirovka;
+export const searchProductSelector = (state: RootState) => state.filter;
 
 export const { setPaginationActiveIndex, setSortirovkaActiveIndex, setSearchProduct } =
     filterSlice.actions;

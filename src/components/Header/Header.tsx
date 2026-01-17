@@ -9,7 +9,6 @@ const Header = () => {
                 <HeaderLogo />
                 <HeaderFilter />
                 <HeaderBtn />
-                <HeaderChangeTheme />
             </div>
         </div>
     );

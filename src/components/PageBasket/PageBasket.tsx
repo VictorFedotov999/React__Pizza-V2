@@ -6,7 +6,7 @@ import BasketEmpty from '../BasketEmpy/BasketEmpy';
 import { useSelector } from 'react-redux';
 import { cartSelector } from '../../store/slices/cartSlice';
 
-const PageBasket = () => {
+const PageBasket: React.FC = () => {
     const { productsCart } = useSelector(cartSelector);
     if (productsCart.length === 0) {
         return <BasketEmpty />;

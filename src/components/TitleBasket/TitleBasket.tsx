@@ -1,6 +1,6 @@
 import TitleBasketSvg from './TitleBasketSvg';
 
-const TitleBasket = () => {
+const TitleBasket: React.FC = () => {
     return (
         <>
             <h2 className='content__title'>

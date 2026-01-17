@@ -1,27 +1,24 @@
+import '../src/scss/app.scss';
 import React from 'react';
 import { Route, Routes } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import '../src/scss/app.scss';
+
 import Header from './components/Header/Header';
 import PageBasket from './components/PageBasket/PageBasket';
 import PageProducts from './components/PageProducts/PageProducts';
 import ProductInfoId from './components/ProductInfoId/ProductInfoId';
 import NotFindPage from './components/NotFindPage/NotFindPage';
-import {
-    changeCurrentPage,
-    fetchAllPizzas,
-    fetchPizzas,
-    productSelector,
-} from './store/slices/productSlice';
+import { fetchAllPizzas, fetchPizzas, productSelector } from './store/slices/productSlice';
 
 import {
     categoriesPaginationSelector,
     categoriesSortirovkaSelector,
     searchProductSelector,
 } from './store/slices/filterSlice';
+import type { AppDispatch } from './store/store';
 
-const App = () => {
-    const dispatch = useDispatch();
+const App: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
 
     const { totalProductOnPage, currentPage } = useSelector(productSelector);
     const { paginationActiveIndex } = useSelector(categoriesPaginationSelector);

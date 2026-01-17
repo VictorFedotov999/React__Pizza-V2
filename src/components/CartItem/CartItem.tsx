@@ -4,8 +4,13 @@ import CartItemPrice from './CartItemPrice.tsx';
 import CartItemCount from './CartItemCount/CartItemCount';
 import CartItemRemove from './CartItemRemove';
 import React from 'react';
+import type { cartProductType } from '../../ts/cartSliceType.ts';
 
-const CartItem = ({ product }) => {
+interface CartItemProps {
+    product: cartProductType;
+}
+
+const CartItem: React.FC<CartItemProps> = ({ product }) => {
     const price = product.count * product.price;
 
     return (

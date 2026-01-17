@@ -1,4 +1,12 @@
-const CartItemInfo = ({ productTitle, productType, productSize }) => {
+import type React from 'react';
+
+interface CartItemInfoProps {
+    productTitle: string;
+    productType: string;
+    productSize: number;
+}
+
+const CartItemInfo: React.FC<CartItemInfoProps> = ({ productTitle, productType, productSize }) => {
     return (
         <>
             <div className='cart__item-info'>

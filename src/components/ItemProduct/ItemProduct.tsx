@@ -4,9 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addProductToCart } from '../../store/slices/cartSlice';
 import { productSelector } from '../../store/slices/productSlice';
 import { useNavigate } from 'react-router-dom';
+import { createItemProduct } from '../../store/utils/utils';
+import type { ProductType } from '../../ts/productSliceType';
+import type { AppDispatch } from '../../store/store';
 
-const ItemProduct = ({ product }) => {
-    const dispatch = useDispatch();
+interface ItemProductProps {
+    product: ProductType;
+}
+
+const ItemProduct: React.FC<ItemProductProps> = ({ product }) => {
+    const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
     const { productType } = useSelector(productSelector);
 
@@ -14,17 +21,8 @@ const ItemProduct = ({ product }) => {
     const [sizeType, setSizeType] = React.useState(0);
 
     const onAddProductToCart = () => {
-        const productCart = {
-            id: product.id,
-            imageUrl: product.imageUrl,
-            name: product.name,
-            types: productType[typeName],
-            sizes: product.sizes[sizeType],
-            price: product.price,
-            category: product.category,
-            rating: product.rating,
-            count: 1,
-        };
+        const productCart = createItemProduct(product, productType, typeName, sizeType);
+
         dispatch(addProductToCart(productCart));
     };
 
@@ -44,7 +42,7 @@ const ItemProduct = ({ product }) => {
                 <h4 className='pizza-block__title'>{product.name}</h4>
                 <div className='pizza-block__selector'>
                     <ul>
-                        {product.types.map((type, index) => (
+                        {product.types.map((type: number, index: number) => (
                             <li
                                 key={`${type}-${index}`}
                                 className={typeName === index ? 'active' : ''}
@@ -55,7 +53,7 @@ const ItemProduct = ({ product }) => {
                         ))}
                     </ul>
                     <ul>
-                        {product.sizes.map((size, index) => (
+                        {product.sizes.map((size: number, index: number) => (
                             <li
                                 key={`${size}-${index}`}
                                 className={sizeType === index ? 'active' : ''}

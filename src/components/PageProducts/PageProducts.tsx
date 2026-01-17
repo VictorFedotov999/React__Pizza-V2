@@ -1,7 +1,7 @@
 import Categories from '../Categories/Categories';
 import ItemsProducts from '../ItemsProducts/ItemsProducts';
 import Pagination from '../Pagination/Pagination';
-const PageProducts = () => {
+const PageProducts: React.FC = () => {
     return (
         <>
             <div className='content'>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NotFindPage = () => {
+const NotFindPage: React.FC = () => {
     return <div>NotFindPage</div>;
 };
 
