@@ -1,15 +1,12 @@
-import '../src/scss/app.scss';
 import React from 'react';
 import { Route, Routes } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Header from './components/Header/Header';
-import PageBasket from './components/PageBasket/PageBasket';
-import PageProducts from './components/PageProducts/PageProducts';
 import ProductInfoId from './components/ProductInfoId/ProductInfoId';
+import PageProducts from './components/PageProducts/PageProducts';
 import NotFindPage from './components/NotFindPage/NotFindPage';
+import PageBasket from './components/PageBasket/PageBasket';
 import { fetchAllPizzas, fetchPizzas, productSelector } from './store/slices/productSlice';
-
 import {
     categoriesPaginationSelector,
     categoriesSortirovkaSelector,
@@ -17,7 +14,7 @@ import {
 } from './store/slices/filterSlice';
 import type { AppDispatch } from './store/store';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const { totalProductOnPage, currentPage } = useSelector(productSelector);
@@ -52,10 +49,10 @@ const App: React.FC = () => {
 
     return (
         <>
-            <div className='wrapper '>
+            <div className='wrapper'>
                 <Header />
                 <Routes>
-                    <Route path='' element={<PageProducts />} />
+                    <Route path='/' element={<PageProducts />} />
                     <Route path='/cart' element={<PageBasket />} />
                     <Route path='/:id' element={<ProductInfoId />} />
                     <Route path='/*' element={<NotFindPage />} />
@@ -64,5 +61,3 @@ const App: React.FC = () => {
         </>
     );
 };
-
-export default App;

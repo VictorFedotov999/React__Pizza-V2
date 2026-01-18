@@ -1,4 +1,3 @@
-import type React from 'react';
 import ProductEmptyPhoto from '../../assets/img/ProductEmpty.png';
 
 const ProductEmpty: React.FC = () => {

@@ -1,4 +1,3 @@
-// import { store } from './../store';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { isSameProduct } from '../utils/utils';
 import type { RootState } from '../store';

@@ -7,7 +7,6 @@ import type { ProductType } from '../../ts/productSliceType';
 
 const ItemsProducts: React.FC = () => {
     const { status, products, totalProductOnPage } = useSelector(productSelector);
-
     const skeletonProduct = Array(totalProductOnPage).fill(0);
 
     if (status === 'loading') {
@@ -19,9 +18,8 @@ const ItemsProducts: React.FC = () => {
             </div>
         );
     }
-    if (products.length === 0) {
-        return <ProductEmpty />;
-    } else {
+
+    if (status === 'success') {
         return (
             <div className='content__items'>
                 {products.map((product: ProductType, index: number) => (
@@ -29,6 +27,10 @@ const ItemsProducts: React.FC = () => {
                 ))}
             </div>
         );
+    }
+
+    if (status === 'error') {
+        return <ProductEmpty />;
     }
 };
 

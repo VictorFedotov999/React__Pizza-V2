@@ -70,7 +70,7 @@ const productSlice = createSlice({
         builder.addCase(fetchPizzas.pending, (state) => {
             state.status = 'loading';
             state.products = [];
-            state.error = '';
+            state.error = 'Перезагрузите страницу';
         });
         builder.addCase(fetchPizzas.fulfilled, (state, action: PayloadAction<ProductType[]>) => {
             state.status = 'success';
@@ -106,7 +106,7 @@ const productSlice = createSlice({
         builder.addCase(fetchPizzaId.pending, (state) => {
             state.status = 'loading';
             state.productId = null;
-            state.error = '';
+            state.error = 'Загрузка';
         });
         builder.addCase(fetchPizzaId.fulfilled, (state, action: PayloadAction<ProductType>) => {
             state.status = 'success';
@@ -122,7 +122,5 @@ const productSlice = createSlice({
 });
 
 export const productSelector = (state: RootState) => state.product;
-
 export const { changeCurrentPage } = productSlice.actions;
-
 export default productSlice.reducer;

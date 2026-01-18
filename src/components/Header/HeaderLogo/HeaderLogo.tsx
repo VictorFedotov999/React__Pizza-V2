@@ -1,6 +1,7 @@
+import React from 'react';
 import ImgHeaderLogo from '../../../assets/img/pizza-logo.svg';
 import { Link } from 'react-router-dom';
-const HeaderLogo = () => {
+const HeaderLogo: React.FC = () => {
     return (
         <>
             <Link to='/'>

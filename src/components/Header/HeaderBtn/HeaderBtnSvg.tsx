@@ -1,4 +1,5 @@
-const HeaderBtnSvg = () => {
+import React from 'react';
+const HeaderBtnSvg: React.FC = () => {
     return (
         <>
             <svg

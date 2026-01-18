@@ -1,7 +1,9 @@
+import React from 'react';
 import Categories from '../Categories/Categories';
 import ItemsProducts from '../ItemsProducts/ItemsProducts';
 import Pagination from '../Pagination/Pagination';
-const PageProducts: React.FC = () => {
+
+const PageProducts: React.FC = React.memo(() => {
     return (
         <>
             <div className='content'>
@@ -13,6 +15,6 @@ const PageProducts: React.FC = () => {
             </div>
         </>
     );
-};
+});
 
 export default PageProducts;

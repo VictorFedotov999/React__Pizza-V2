@@ -3,7 +3,7 @@ import type { AppDispatch } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { productSelector, changeCurrentPage } from '../../store/slices/productSlice';
 
-const Pagination = () => {
+const Pagination: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const { totalProductOnPage, currentPage, allProducts, status } = useSelector(productSelector);

@@ -22,7 +22,7 @@ const ProductInfoId: React.FC = () => {
 
     React.useEffect(() => {
         dispatch(fetchPizzaId({ id }));
-    }, [id]);
+    }, [id, dispatch]);
 
     if (!productId || !productId.id) {
         return (

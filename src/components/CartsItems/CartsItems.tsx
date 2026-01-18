@@ -1,4 +1,3 @@
-import type React from 'react';
 import CartItem from '../CartItem/CartItem';
 import { useSelector } from 'react-redux';
 import { cartSelector } from '../../store/slices/cartSlice';

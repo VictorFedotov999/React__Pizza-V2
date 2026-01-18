@@ -22,7 +22,6 @@ const ItemProduct: React.FC<ItemProductProps> = ({ product }) => {
 
     const onAddProductToCart = () => {
         const productCart = createItemProduct(product, productType, typeName, sizeType);
-
         dispatch(addProductToCart(productCart));
     };
 

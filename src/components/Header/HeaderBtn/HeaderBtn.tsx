@@ -1,9 +1,12 @@
+import React from 'react';
+import HeaderBtnSvg from './HeaderBtnSvg';
+import HeaderChangeTheme from '../HeaderChangeTheme/HeaderChangeTheme';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import HeaderBtnSvg from './HeaderBtnSvg';
+
 import { cartSelector } from '../../../store/slices/cartSlice';
-import HeaderChangeTheme from '../HeaderChangeTheme/HeaderChangeTheme';
-const HeaderBtn = () => {
+
+const HeaderBtn: React.FC = () => {
     const { totalCount, totalOrder } = useSelector(cartSelector);
     const location = useLocation();
     return (

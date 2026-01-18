@@ -1,8 +1,9 @@
+import React from 'react';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 import HeaderFilter from './HeaderFilter/HeaderFilter';
 import HeaderBtn from './HeaderBtn/HeaderBtn';
-import HeaderChangeTheme from './HeaderChangeTheme/HeaderChangeTheme';
-const Header = () => {
+
+const Header: React.FC = React.memo(() => {
     return (
         <div className='header'>
             <div className='container'>
@@ -12,6 +13,6 @@ const Header = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Header;

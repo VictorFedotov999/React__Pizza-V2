@@ -10,7 +10,7 @@ interface CartItemProps {
     product: cartProductType;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ product }) => {
+const CartItem: React.FC<CartItemProps> = React.memo(({ product }) => {
     const price = product.count * product.price;
 
     return (
@@ -26,6 +26,6 @@ const CartItem: React.FC<CartItemProps> = ({ product }) => {
             <CartItemRemove product={product} />
         </div>
     );
-};
+});
 
 export default CartItem;

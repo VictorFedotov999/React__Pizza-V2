@@ -1,7 +1,8 @@
+import React from 'react';
 import CartOrderDetails from './CartOrderDetails/CartOrderDetails';
 import CartOrderButtons from './CartOrderButtons/CartOrderButtons';
 
-const AboutOrder = () => {
+const AboutOrder: React.FC = React.memo(() => {
     return (
         <>
             <div className='cart__bottom'>
@@ -10,6 +11,6 @@ const AboutOrder = () => {
             </div>
         </>
     );
-};
+});
 
 export default AboutOrder;

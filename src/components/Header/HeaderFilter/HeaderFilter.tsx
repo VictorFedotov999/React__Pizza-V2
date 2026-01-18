@@ -1,17 +1,18 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import debounce from 'lodash/debounce';
+import { debounce } from 'lodash';
 import iconSearch from '../../../assets/img/search.png';
 import iconDelete from '../../../assets/img/krestik.png';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { setSearchProduct } from '../../../store/slices/filterSlice';
+import type { AppDispatch } from '../../../store/store';
 
 const HeaderFilter = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const location = useLocation();
     const [value, setValue] = React.useState('');
 
-    const inputRef = React.useRef();
+    const inputRef = React.useRef<HTMLInputElement>(null);
 
     const onClickClear = () => {
         setValue('');
@@ -24,13 +25,13 @@ const HeaderFilter = () => {
     };
 
     const updateSearchValue = React.useCallback(
-        debounce((str) => {
+        debounce((str: string) => {
             dispatch(setSearchProduct(str));
         }, 1000),
         [dispatch],
     );
 
-    const onChangeInput = (event) => {
+    const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
         updateSearchValue(event.target.value);
     };

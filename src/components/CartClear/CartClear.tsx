@@ -1,4 +1,3 @@
-import type React from 'react';
 import CartClearSvg from './CartClearSvg';
 import { useDispatch } from 'react-redux';
 import { clearCart } from '../../store/slices/cartSlice';
