@@ -235,6 +235,17 @@ React__Pizza V2
 
 - ### Централизованное управление состоянием через Redux
 
+### Интерфейс
+![img](src/assets/imgGit/img1.png)
+![img](src/assets/imgGit/img2.png)
+![img](src/assets/imgGit/img3.png)
+![img](src/assets/imgGit/img4.png)
+![img](src/assets/imgGit/img5.png)
+![img](src/assets/imgGit/img.png)
+![img](src/assets/imgGit/img6.png)
+![img](src/assets/imgGit/img7.png)
+![img](src/assets/imgGit/img8.png)
+
 ### ▶️ Запуск проекта
 ```
 # Установка зависимостей
